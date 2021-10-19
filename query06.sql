@@ -1,5 +1,9 @@
 /*
   What are the top five neighborhoods according to your accessibility metric?
+
+I used the quantity of bus_stops_accessible per km^2 to measure the top five 
+neighborhoods. They are Washington Square West，Newbold, Spring Garden, Hawthorne
+and 	Francisville.
 */
 
 with neighborhood_acc_count as (

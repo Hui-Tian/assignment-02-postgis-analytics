@@ -22,14 +22,6 @@ double precision
 */
 
 
-
-alter table septa_bus_shapes
-    add column the_geom geometry;
-
-update septa_bus_shapes
-    set the_geom = st_transform(st_setsrid(st_makepoint(shape_pt_lon,shape_pt_lat), 4326), 32129);
-
-
 select shape_id trip_headsign,
     st_length(
         st_makeline(

@@ -1,6 +1,6 @@
 # Assignment 02: PostGIS Analytics
 
-**Due: Oct 18, 2021 by 11:59pm ET**
+**Due: Oct 11, 2021 by 11:59pm ET**
 
 ## Submission Instructions
 
@@ -22,9 +22,15 @@
 
 ## Questions
 
+Setup: I simplified the names of the datasets when importing into Postgres. The query will display "Census_Block_Groups_2010" as "censusblock", "Neighborhoods_Philadelphia" as "nb_philly", "Universities_Colleges" as "university", and change "PWD_PARCELS" as "parcels". The rest will be as same name as the original ones. For your convinience, I also uploaded the data folder into assignment folder.
+
 1. Which bus stop has the largest population within 800 meters? As a rough estimation, consider any block group that intersects the buffer as being part of the 800 meter buffer.
 
+The stop in Passyunk Av & 15th St has the largest population of 50867.
+
 2. Which bus stop has the smallest population within 800 meters?
+
+The stop in Charter Rd & Norcom Rd has the smallest population of 2.
 
   **The queries to #1 & #2 should generate relations with a single row, with the following structure:**
 
@@ -38,6 +44,9 @@
 
 3. Using the Philadelphia Water Department Stormwater Billing Parcels dataset, pair each parcel with its closest bus stop. The final result should give the parcel address, bus stop name, and distance apart in meters. Order by distance (largest on top).
 
+Please see query 3.
+
+
   **Structure:**
   ```sql
   (
@@ -49,6 +58,19 @@
 
 4. Using the _shapes.txt_ file from GTFS bus feed, find the **two** routes with the longest trips. In the final query, give the `trip_headsign` that corresponds to the `shape_id` of this route and the length of the trip.
 
+trip_headsign   trip_length
+
+1    266311    15445.022598533462
+2    266312    10044.302723523808
+3    266313    15445.022598533462
+4    266314    11149.19555001167
+5    266315    10982.949704950272
+6    266316    11082.62674632245
+7    266317    15445.022598533462
+8    266318    10044.302723523808
+9    266319    850.1272722607503
+10    266320    10982.949704950272
+
   **Structure:**
   ```sql
   (
@@ -59,11 +81,21 @@
 
 5. Rate neighborhoods by their bus stop accessibility for wheelchairs. Use Azavea's neighborhood dataset from OpenDataPhilly along with an appropriate dataset from the Septa GTFS bus feed. Use the [GTFS documentation](https://gtfs.org/reference/static/) for help. Use some creativity in the metric you devise in rating neighborhoods. Describe your accessibility metric:
 
-  **Description:**
+  **Description:**  I used the quantity of bus_stops_accessible per km^2 of neighborhood 
+  as the metric of rating neighborhoods by their bus stop accessibility 
+  for wheelchairs.
 
 6. What are the _top five_ neighborhoods according to your accessibility metric?
 
+I used the quantity of bus_stops_accessible per km^2 to measure the top five 
+neighborhoods. They are Washington Square West，Newbold, Spring Garden, Hawthorne
+and Francisville.
+
 7. What are the _bottom five_ neighborhoods according to your accessibility metric?
+
+I used the quantity of bus_stops_accessible per km^2 to measure the bottom five 
+neighborhoods. They are 1    Bartram Village，Port Richmond, West Torresdale, 4    Navy Yard
+and Airport.
 
   **Both #6 and #7 should have the structure:**
   ```sql
@@ -77,6 +109,11 @@
 
 8. With a query, find out how many census block groups Penn's main campus fully contains. Discuss which dataset you chose for defining Penn's campus.
 
+number:23
+
+I found the shapfile of UPenn from the Open Data Philly. Here below is the link to the file. "https://www.opendataphilly.org/dataset/philadelphia-universities-and-colleges/resource/1e37f5f0-6212-4cb4-9d87-261b58ae01c4 "I selected campus area, geoid and name from two table, and join them with "st_contains" command. At last, I got the number of the tracts contained in the UPenn campus.
+
+
   **Structure (should be a single value):**
   ```sql
   (
@@ -86,6 +123,7 @@
 
 9. With a query involving PWD parcels and census block groups, find the `geo_id` of the block group that contains Meyerson Hall. ST_MakePoint() and functions like that are not allowed.
 
+ Geoid = 421010369001
   **Structure (should be a single value):**
   ```sql
   (

@@ -7,11 +7,11 @@
 */
 
 with meyerson_hall_parcel as (
-    SELECT geometry meyerson_hall_parcel_geo 
-    FROM parcels
+    select geometry meyerson_hall_parcel_geo 
+    from parcels
     where address like '3406-46 WALNUT ST'
 )
-SELECT geoid10 geo_id
+select geoid10 geo_id
 from censusblock,meyerson_hall_parcel
 where st_contains(geometry,meyerson_hall_parcel_geo)
 

@@ -1,6 +1,10 @@
 /*
   What are the bottom five neighborhoods according to your accessibility 
   metric?
+
+  I used the quantity of bus_stops_accessible per km^2 to measure the bottom five 
+neighborhoods. They are 1	Bartram Village，Port Richmond, West Torresdale, 4	Navy Yard
+and Airport.
 */
   
 with neighborhood_acc_count as (
