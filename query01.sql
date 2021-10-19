@@ -2,6 +2,8 @@
   Which bus stop has the largest population within 800 meters? As a rough
   estimation, consider any block group that intersects the buffer as being part
   of the 800 meter buffer.
+
+  The stop in Passyunk Av & 15th St has the largest population of 50867.
 */
 
 
@@ -21,14 +23,6 @@ ADD COLUMN the_geom geometry;
 update censusblock
 set the_geom = st_transform(geometry,32129);
 
-select * from census_population
-limit 5
-
-select * from censusblock
-limit 5
-
-select * from septa_bus_stops
-limit 5
 
 with septa_bus_stop_block_groups as (
     select

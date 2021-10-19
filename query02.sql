@@ -1,5 +1,7 @@
 /*
   Which bus stop has the smallest population within 800 meters?
+
+  The stop in Charter Rd & Norcom Rd has the smallest population of 2.
 */
 
 with septa_bus_stop_block_groups as (
