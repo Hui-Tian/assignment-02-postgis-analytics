@@ -22,7 +22,7 @@
 
 ## Questions
 
-Setup: I simplified the names of the datasets when importing into Postgres. The query will display "Census_Block_Groups_2010" as "censusblock", "Neighborhoods_Philadelphia" as "nb_philly", "Universities_Colleges" as "university", and change "PWD_PARCELS" as "parcels". The rest will be as same name as the original ones. For your convinience, I also uploaded the data folder into assignment folder.
+Setup: I simplified the names of the datasets when importing into Postgres. The query will display "Census_Block_Groups_2010" as "censusblock", "Neighborhoods_Philadelphia" as "nb_philly", "Universities_Colleges" as "university", and change "PWD_PARCELS" as "parcels". The rest will be as same name as the original ones. For your convinience, I also shared the data folder in google drive, which you can find it here. https://drive.google.com/drive/folders/1AISIzHTx48DD8sClL_bvvzf_ZUaw3DSm?usp=sharing
 
 1. Which bus stop has the largest population within 800 meters? As a rough estimation, consider any block group that intersects the buffer as being part of the 800 meter buffer.
 
@@ -132,6 +132,9 @@ I found the shapfile of UPenn from the Open Data Philly. Here below is the link 
   ```
 
 10. You're tasked with giving more contextual information to rail stops to fill the `stop_desc` field in a GTFS feed. Using any of the data sets above, PostGIS functions (e.g., `ST_Distance`, `ST_Azimuth`, etc.), and PostgreSQL string functions, build a description (alias as `stop_desc`) for each stop. Feel free to supplement with other datasets (must provide link to data used so it's reproducible), and other methods of describing the relationships. PostgreSQL's `CASE` statements may be helpful for some operations.
+
+       I gathered information of each rail stop , which includes distance and direction to each address in the parcel dataset. Then I summarize the description and fill the stop_desc field. Please see details in query 10. 
+
 
   **Structure:**
   ```sql
